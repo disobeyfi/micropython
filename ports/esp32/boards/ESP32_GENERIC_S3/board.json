@@ -19,6 +19,7 @@
     "vendor": "Espressif",
     "variants": {
         "SPIRAM_OCT": "Support for Octal-SPIRAM",
-        "FLASH_4M": "4MiB flash"
+        "FLASH_4M": "4MiB flash",
+        "DEVKITW2":  "config for ESP32-S3-DevKitC-1 Wroom2 "
     }
 }
