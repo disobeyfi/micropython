@@ -14,6 +14,7 @@ class CommandError(Exception):
 
 def do_connect(state, args=None):
     dev = args.device[0] if args else "auto"
+    baudrate = args.baudrate if args else state.baudrate
     do_disconnect(state)
 
     try:
@@ -37,7 +38,7 @@ def do_connect(state, args=None):
             for p in sorted(serial.tools.list_ports.comports()):
                 if p.vid is not None and p.pid is not None:
                     try:
-                        state.transport = SerialTransport(p.device, baudrate=115200)
+                        state.transport = SerialTransport(p.device, baudrate=baudrate)
                         return
                     except TransportError as er:
                         if not er.args[0].startswith("failed to access"):
@@ -49,14 +50,14 @@ def do_connect(state, args=None):
             dev = None
             for p in serial.tools.list_ports.comports():
                 if p.serial_number == serial_number:
-                    state.transport = SerialTransport(p.device, baudrate=115200)
+                    state.transport = SerialTransport(p.device, baudrate=baudrate)
                     return
             raise TransportError("no device with serial number {}".format(serial_number))
         else:
             # Connect to the given device.
             if dev.startswith("port:"):
                 dev = dev[len("port:") :]
-            state.transport = SerialTransport(dev, baudrate=115200)
+            state.transport = SerialTransport(dev, baudrate=baudrate)
             return
     except TransportError as er:
         msg = er.args[0]

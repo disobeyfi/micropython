@@ -46,6 +46,14 @@ _PROG = "mpremote"
 def do_sleep(state, args):
     time.sleep(args.ms[0])
 
+def do_baud(state, args):
+    """set baudrate of the pyboard"""
+    state.baudrate = int(args.baud[0])
+
+def argparse_baud():
+    cmd_parser = argparse.ArgumentParser(description="set baudrate of the pyboard (115200)")
+    cmd_parser.add_argument("baud", nargs=1, type=int, help="baudrate")
+    return cmd_parser
 
 def do_help(state, _args=None):
     def print_commands_help(cmds, help_key):
@@ -100,6 +108,10 @@ def argparse_connect():
     cmd_parser.add_argument(
         "device", nargs=1, help="Either list, auto, id:x, port:x, or any valid device name/path"
     )
+    cmd_parser.add_argument(
+        "baud", nargs=1, help="baudrate of the device", type=int, default=115200
+    )
+
     return cmd_parser
 
 
@@ -293,6 +305,10 @@ _COMMANDS = {
         do_version,
         argparse_none("print version and exit"),
     ),
+    "baud": (
+        do_baud,
+        argparse_baud,
+    )
 }
 
 # Additional commands aliases.
@@ -452,6 +468,7 @@ class State:
         self.transport = None
         self._did_action = False
         self._auto_soft_reset = True
+        self.baudrate = 115200
 
     def did_action(self):
         self._did_action = True
