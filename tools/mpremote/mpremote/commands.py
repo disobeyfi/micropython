@@ -14,7 +14,7 @@ class CommandError(Exception):
 
 def do_connect(state, args=None):
     dev = args.device[0] if args else "auto"
-    baudrate = args.baudrate if args else state.baudrate
+    baudrate = args.baudrate if hasattr(args,'baudrate') else state.baudrate
     do_disconnect(state)
 
     try:
