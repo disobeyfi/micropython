@@ -2,7 +2,9 @@
 nvs,      data, nvs,      0x9000,  0x4000
 otadata,  data, ota,      0xd000,  0x2000
 phy_init, data, phy,      0xf000,  0x1000
-factory,  app,  factory,  0x10000,  5M
-ota_0,    app,  ota_0,    ,         5M
-ota_1,    app,  ota_1,    ,         5M
+factory,  app,  factory,  0x10000,  3M
+ota_0,    app,  ota_0,    ,         3M
+ota_1,    app,  ota_1,    ,         3M
 nvs_key,  data, nvs_keys, ,        0x1000
+# Some space for datafiles if needed
+vfs,      data, fat,     , 10M,
