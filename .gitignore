@@ -26,3 +26,10 @@ user.props
 .DS_Store
 
 esp-idf/
+# Created by ci.sh zephyr targets
+/.ccache
+/zephyrproject
+
+# Created by ci.sh esp8266 targets
+/xtensa-lx106-elf-standalone.tar.gz
+/xtensa-lx106-elf/

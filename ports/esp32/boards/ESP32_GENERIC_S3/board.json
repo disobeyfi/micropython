@@ -1,7 +1,10 @@
 {
     "deploy": [
-        "../deploy_s3.md"
+        "../deploy.md"
     ],
+    "deploy_options": {
+        "flash_offset": "0"
+    },
     "docs": "",
     "features": [
         "BLE",
@@ -21,5 +24,8 @@
         "SPIRAM_OCT": "Support for Octal-SPIRAM",
         "FLASH_4M": "4MiB flash",
         "DEVKITW2":  "config for ESP32-S3-DevKitC-1 Wroom2 "
+    },
+    "old_variants": {
+        "FLASH_4M": ["4MiB flash", "Use the standard variant instead."]
     }
 }

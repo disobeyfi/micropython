@@ -58,6 +58,7 @@ set(MICROPY_SOURCE_PY
     ${MICROPY_PY_DIR}/mpz.c
     ${MICROPY_PY_DIR}/nativeglue.c
     ${MICROPY_PY_DIR}/nlr.c
+    ${MICROPY_PY_DIR}/nlraarch64.c
     ${MICROPY_PY_DIR}/nlrmips.c
     ${MICROPY_PY_DIR}/nlrpowerpc.c
     ${MICROPY_PY_DIR}/nlrrv32.c
@@ -72,6 +73,7 @@ set(MICROPY_SOURCE_PY
     ${MICROPY_PY_DIR}/objattrtuple.c
     ${MICROPY_PY_DIR}/objbool.c
     ${MICROPY_PY_DIR}/objboundmeth.c
+    ${MICROPY_PY_DIR}/objcode.c
     ${MICROPY_PY_DIR}/objcell.c
     ${MICROPY_PY_DIR}/objclosure.c
     ${MICROPY_PY_DIR}/objcomplex.c

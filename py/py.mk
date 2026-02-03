@@ -149,6 +149,7 @@ PY_CORE_O_BASENAME = $(addprefix py/,\
 	objboundmeth.o \
 	objcell.o \
 	objclosure.o \
+	objcode.o \
 	objcomplex.o \
 	objdeque.o \
 	objdict.o \
@@ -251,7 +252,7 @@ $(HEADER_BUILD)/compressed.data.h: $(HEADER_BUILD)/compressed.collected
 	$(Q)$(PYTHON) $(PY_SRC)/makecompresseddata.py $< > $@
 
 # build a list of registered modules for py/objmodule.c.
-$(HEADER_BUILD)/moduledefs.h: $(HEADER_BUILD)/moduledefs.collected
+$(HEADER_BUILD)/moduledefs.h: $(HEADER_BUILD)/moduledefs.collected $(PY_SRC)/makemoduledefs.py
 	@$(ECHO) "GEN $@"
 	$(Q)$(PYTHON) $(PY_SRC)/makemoduledefs.py $< > $@
 
